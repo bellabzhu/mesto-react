@@ -2,10 +2,7 @@ import React from "react";
 
 
 function Main (props) {
-  //const [isOpened, setProfilePopup] = React.useState(false);
-
   
-
   return (
     <main className="main">
 
@@ -49,7 +46,6 @@ function Main (props) {
     </template>
 
   </main>
-  
   )
 }
 
