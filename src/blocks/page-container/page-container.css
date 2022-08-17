@@ -1,0 +1,16 @@
+.page-container {
+  margin: 0;
+  padding: 45px 0 60px 0;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 425px) {
+  .page-container {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+}

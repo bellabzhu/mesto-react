@@ -1,0 +1,9 @@
+.button-submit_valid {
+  background-color: black;
+  color: white;
+  opacity: 1;
+}
+
+.button-submit_valid:hover {
+  opacity: 0.8;
+}

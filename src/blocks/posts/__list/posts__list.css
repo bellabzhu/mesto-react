@@ -1,0 +1,31 @@
+.posts__list {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  grid-gap: 20px 17px;
+}
+
+@media screen and (max-width: 1024px) {
+  .posts__list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px 50px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .posts__list {
+    grid-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .posts__list {
+    grid-template-columns: 1fr;
+  }
+}

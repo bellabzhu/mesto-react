@@ -1,0 +1,17 @@
+.popup__input-error {
+  opacity: 1;
+  margin: 0;
+  padding: 4px 0 0 0;
+  box-sizing: border-box;
+  display: block;
+  min-height: 34px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+}
+
+.popup__input-error:last-of-type {
+  margin-bottom: 14px;
+}

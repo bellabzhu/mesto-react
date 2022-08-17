@@ -1,0 +1,25 @@
+.button-submit {
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  background-color: black;
+  color: white;
+  opacity: 1;
+}
+
+.button-submit:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+  .button-submit {
+    font-size: 14px;
+    line-height: 17px;
+    height: 46px;
+  }
+}

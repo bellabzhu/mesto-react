@@ -1,0 +1,30 @@
+.header__logo {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 142px;
+  height: 33px;
+  background-image: url(../../../images/logo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: 0.2s linear;
+}
+
+.header__logo:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 425px) {
+  .header__logo {
+    width: 104px;
+    height: 24px;
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header__logo {
+    margin-left: 27px;
+  }
+}

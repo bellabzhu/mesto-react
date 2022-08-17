@@ -1,0 +1,39 @@
+.profile__avatar {
+  margin: 0;
+  padding: 0;
+  width: 120px;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  grid-row: 1 / 3;
+  grid-column: 1;
+  border-radius: 50%;
+  opacity: 1;
+  transition: 0.2s linear;
+}
+
+.profile__avatar:hover {
+  cursor: pointer;
+  opacity: 0.2;
+}
+
+.profile__avatar::before {
+  content: '';
+  background-color: black;
+}
+
+@media screen and (max-width: 850px) {
+  .profile__avatar {
+    grid-row: 1;
+    grid-column: 1;
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile__avatar {
+    width: 120px;
+    height: 120px;
+  }
+}
