@@ -7,31 +7,36 @@ import PopupWithForm from './PopupWithForm';
 
 function App() {
 
-  const [isEditProfilePopupOpen, setProfilePopup] = React.useState(false)
-  const [isAddPlacePopupOpen, setOpenPlacePopup] = React.useState(false)
-  const [isEditAvatarPopupOpen, setOpenAvatarPopup] = React.useState(false)
-
+  const [isEditProfilePopupOpen, setProfilePopup] = React.useState(false);
+  const [isAddPlacePopupOpen, setOpenPlacePopup] = React.useState(false);
+  const [isEditAvatarPopupOpen, setOpenAvatarPopup] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState(null);
 
   function handleEditProfileClick () {
-    setProfilePopup(true)
+    setProfilePopup(true);
     console.log('you clicked on Profile!')
   }
 
   function handleEditAvatarClick () {
-    setOpenAvatarPopup(true)
+    setOpenAvatarPopup(true);
     console.log('you clicked on Avatar!')
   }
 
   function handleAddPlaceClick () {
-    setOpenPlacePopup(true)
+    setOpenPlacePopup(true);
     console.log('you clicked on Add Card!')
+  }
+
+  function handleCardClick () {
+    
   }
 
   function closeAllPopups () {
     console.log('You are closing this!')
-    setOpenPlacePopup(false)
-    setOpenAvatarPopup(false)
-    setProfilePopup(false)
+    setOpenPlacePopup(false);
+    setOpenAvatarPopup(false);
+    setProfilePopup(false);
+    setSelectedCard(null);
   }
 
   return (
