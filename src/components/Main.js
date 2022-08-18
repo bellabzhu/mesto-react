@@ -1,5 +1,6 @@
 import React from "react";
-import { api } from '../utils/Api'
+import { api } from '../utils/Api';
+import Card from './Card';
 
 function Main (props) {
   
@@ -15,11 +16,13 @@ function Main (props) {
         setUserDescription(userData.about)
         setUserAvatar(userData.avatar)
       })
+      .catch((err) => console.log(err))
   }, [userName, userDescription, userAvatar])
 
   React.useEffect(() => {
     api.getInitialCards()
       .then((cardsData) => setCards(cardsData))
+      .catch((err) => console.log(err))
     }, [])
 
   return (
@@ -37,20 +40,13 @@ function Main (props) {
 
     <section className="posts" aria-label="Посты">
       <ul className="posts__list">
-
-    {cards.map((card, i) => (
-            <li className="card" key={card._id}>
-            <button className="button button-delete" aria-label="Удалить" type="button"></button>
-            <img src={card.link} className="card__image" alt={card.name} />
-            <div className="card__container">
-              <h2 className="card__title">{card.name}</h2>
-              <div className="card__likes-container">
-                <button className="button button-like" aria-label="Нравится" type="button"></button>
-                <span className="card__likes-counter">{card.likes.length}</span>
-              </div>
-            </div>
-          </li>
-      ))}
+        {cards.map((card, i) => (
+          <Card
+          card={card}
+          key={card._id}
+          onCardClick={props.onCardClick}
+          />
+        ))}
       </ul>
     </section>
 

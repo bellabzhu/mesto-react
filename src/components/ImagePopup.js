@@ -1,12 +1,6 @@
-function ImagePopup (props) {
+import React from "react";
 
-  // props: 
-  // card
-  // onClose
-  
-  function handleClick() {
-    props.onCardClick(props.card);
-  }  
+function ImagePopup (props) {
 
   return(
     <div className={`popup popup_type_image-zoomed 
@@ -18,8 +12,8 @@ function ImagePopup (props) {
       <div className="popup__zoom-container popup__container-area">
       <button className="button button-close" type="button" onClick={props.onClose} aria-label="Закрыть"></button>
       <figure className="popup__zoom-container">
-        <img src="#" className="popup__image-zoomed" alt="alt" />
-        <figcaption className="popup__zoom-caption"></figcaption>
+        <img src={props.card ? props.card.link : '#'} className="popup__image-zoomed" alt={props.card ? props.card.name : ''} />
+        <figcaption className="popup__zoom-caption">{props.card ? props.card.name : ''}</figcaption>
       </figure>
       </div>
     </div>
