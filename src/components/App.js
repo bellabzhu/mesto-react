@@ -8,34 +8,34 @@ import ImagePopup from './ImagePopup';
 
 function App() {
 
-  const [isEditProfilePopupOpen, setProfilePopup] = React.useState(false);
-  const [isAddPlacePopupOpen, setOpenPlacePopup] = React.useState(false);
-  const [isEditAvatarPopupOpen, setOpenAvatarPopup] = React.useState(false);
-  const [isImagePopupOpen, setOpenImagePopup] = React.useState(false)
+  const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = React.useState(false);
+  const [isImagePopupOpen, setisImagePopupOpen] = React.useState(false)
   const [selectedCard, setSelectedCard] = React.useState(null);
 
   function handleEditProfileClick () {
-    setProfilePopup(true);
+    setisEditProfilePopupOpen(true);
   }
 
   function handleEditAvatarClick () {
-    setOpenAvatarPopup(true);
+    setisEditAvatarPopupOpen(true);
   }
 
   function handleAddPlaceClick () {
-    setOpenPlacePopup(true);
+    setisAddPlacePopupOpen(true);
   }
 
   function handleCardClick (card) {
-    setOpenImagePopup(true);
+    setisImagePopupOpen(true);
     setSelectedCard(card)
   }
 
   function closeAllPopups () {
-    setOpenPlacePopup(false);
-    setOpenAvatarPopup(false);
-    setProfilePopup(false);
-    setOpenImagePopup(false);
+    setisAddPlacePopupOpen(false);
+    setisEditAvatarPopupOpen(false);
+    setisEditProfilePopupOpen(false);
+    setisImagePopupOpen(false);
   }
 
   return (

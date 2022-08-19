@@ -17,7 +17,7 @@ function Main (props) {
         setUserAvatar(userData.avatar)
       })
       .catch((err) => console.log(err))
-  }, [userName, userDescription, userAvatar])
+  }, [])
 
   React.useEffect(() => {
     api.getInitialCards()
