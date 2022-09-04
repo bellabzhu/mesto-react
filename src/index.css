@@ -26,6 +26,7 @@
 @import url(./blocks/button-like/button-like.css);
 @import url(./blocks/button-like/_pressed/button-like_pressed.css);
 @import url(./blocks/button-delete/button-delete.css);
+@import url(./blocks/button-delete/_hidden/button-delete_hidden.css);
 @import url(./blocks/button-submit/button-submit.css);
 @import url(./blocks/button-submit/_invalid/button-submit_invalid.css);
 @import url(./blocks/button-submit/_valid/button-submit_valid.css);
