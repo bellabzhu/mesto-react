@@ -54,26 +54,15 @@ class Api {
     .then(this._checkResponse)
   }
 
-  putLike (cardId, whoLiked) {
+  changeLikeCardStatus (cardId, isLiked, whoLiked) {
     return fetch(`${this._config.fetchCards}/${cardId}/likes`, {
-      method: 'PUT',
+      method: isLiked ? 'DELETE' : 'PUT',
       headers: this._config.headers,
       body: JSON.stringify({
         likes: whoLiked
       })
     })
-    .then(this._checkResponse)
-  }
-
-  removeLike (cardId, whoLiked) {
-    return fetch(`${this._config.fetchCards}/${cardId}/likes`, {
-      method: 'DELETE',
-      headers: this._config.headers,
-      body: JSON.stringify({
-        likes: whoLiked
-      })
-    })
-    .then(this._checkResponse)
+    .then(this._checkResponse);
   }
 
   delCard (cardId) {
@@ -81,7 +70,7 @@ class Api {
       method: 'DELETE',
       headers: this._config.headers,
     })
-  .then(this._checkResponse)
+    .then(this._checkResponse)
   }
 
   _checkResponse (res) {
