@@ -1,40 +1,30 @@
-function PopupWithForm({
-  isOpen,
-  onClose,
-  name,
-  title,
-  buttonText,
-  children,
-}) {
-
-  function handleSumbitForm () {
-    console.log('submit')
-  }
+function PopupWithForm(props) {
 
   return (
     <div
       className={`popup 
-    popup_type_${name} ${isOpen ? "popup_opened" : ""} `}
+    popup_type_${props.name} ${props.isOpen ? "popup_opened" : ""} `}
     >
       <div className="popup__container popup__container-area">
         <button
           className="button button-close"
-          onClick={onClose}
+          onClick={props.onClose}
           type="button"
           aria-label="Закрыть"
         ></button>
-        <h2 className="popup__title">{title}</h2>
+        <h2 className="popup__title">{props.title}</h2>
         <form
-          className={`popup__form popup__form_type_${name}`}
-          name={`form_${name}`}
+          className={`popup__form popup__form_type_${props.name}`}
+          name={`form_${props.name}`}
+          onSubmit={props.onSubmit}
         >
-          {children}
+          {props.children}
           <button
             type="submit"
             className="button button-submit"
-            value={buttonText}
+            value={props.buttonText}
           >
-            {buttonText}
+            {props.buttonText}
           </button>
         </form>
       </div>

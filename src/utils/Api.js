@@ -19,7 +19,7 @@ class Api {
     .then(this._checkResponse)
   }
 
-  editUserInfo (newData) {
+  setUserInfo (newData) {
     return fetch(this._config.fetchUserInfo, {
       method: 'PATCH',
       headers: this._config.headers,
@@ -31,7 +31,7 @@ class Api {
     .then(this._checkResponse)
   }
 
-  editUserAvatar (avatarData) {
+  setUserAvatar (avatarData) {
     return fetch(this._config.fetchAvatar, {
       method: 'PATCH',
       headers: this._config.headers,

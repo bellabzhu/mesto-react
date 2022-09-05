@@ -24,6 +24,13 @@ function App() {
       .catch((err) => console.log(err))
   }, [])
 
+  function handleUpdateUser (userInfo) {
+    api.setUserInfo(userInfo)
+      .then((user) => setCurrentUser(user))
+      .catch((err) => console.log(err))
+      .finally(() => closeAllPopups())
+  }
+
   function handleEditProfileClick () {
     setIsEditProfilePopupOpen(true);
   }
@@ -62,7 +69,8 @@ function App() {
 
       <EditProfilePopup
         isOpen={isEditProfilePopupOpen} 
-        onClose={closeAllPopups} 
+        onClose={closeAllPopups}
+        onUpdateUser={handleUpdateUser}
       /> 
 
       <PopupWithForm
