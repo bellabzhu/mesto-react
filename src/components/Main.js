@@ -17,10 +17,17 @@ function Main (props) {
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked, currentUser)
-    .then((newCard) => {
-      setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
-    })
-    .catch((err) => console.log(err))
+      .then((newCard) => {
+        setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
+      })
+      .catch((err) => console.log(err))
+  }
+
+  // После запроса в API, обновите стейт cards с помощью метода filter: создайте копию массива, исключив из него удалённую карточку.
+  function handleCardDelete (card) {
+    api.delCard (card._id)
+      .then()
+      .catch((err) => console.log(err))
   }
 
   return (
@@ -44,6 +51,7 @@ function Main (props) {
           key={card._id}
           onCardClick={props.onCardClick}
           onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
           />
         ))}
       </ul>

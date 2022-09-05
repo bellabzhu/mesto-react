@@ -1,15 +1,20 @@
 function PopupWithForm({
-  isOpened,
+  isOpen,
   onClose,
   name,
   title,
   buttonText,
   children,
 }) {
+
+  function handleSumbitForm () {
+    console.log('submit')
+  }
+
   return (
     <div
       className={`popup 
-    popup_type_${name} ${isOpened ? "popup_opened" : ""} `}
+    popup_type_${name} ${isOpen ? "popup_opened" : ""} `}
     >
       <div className="popup__container popup__container-area">
         <button
