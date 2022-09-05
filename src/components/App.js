@@ -8,6 +8,7 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 
 function App() {
 
@@ -26,6 +27,14 @@ function App() {
 
   function handleUpdateUser (userInfo) {
     api.setUserInfo(userInfo)
+      .then((user) => setCurrentUser(user))
+      .catch((err) => console.log(err))
+      .finally(() => closeAllPopups())
+  }
+
+  function handleUpdateAvatar (userAvatar) {
+    console.log('перед апишкой')
+    api.setUserAvatar(userAvatar)
       .then((user) => setCurrentUser(user))
       .catch((err) => console.log(err))
       .finally(() => closeAllPopups())
@@ -85,15 +94,11 @@ function App() {
           <span className="popup__input-error popup__input-placelink-error"></span>      
       </PopupWithForm>
 
-      <PopupWithForm
-        title="Обновить&nbsp;аватар"
-        name="edit-avatar"
-        isOpened={isEditAvatarPopupOpen}
+      <EditAvatarPopup 
+        isOpen={isEditAvatarPopupOpen} 
         onClose={closeAllPopups}
-        buttonText="Сохранить">
-          <input className="popup__input popup__input_value_avatarlink" type="url" id="avatarlink" placeholder="Ссылка на картинку" name="avatar" required />
-          <span className="popup__input-error popup__input-avatarlink-error"></span>
-      </PopupWithForm>
+        onUpdateAvatar={handleUpdateAvatar}
+      />
 
       <PopupWithForm
         title="Вы&nbsp;уверены?"
