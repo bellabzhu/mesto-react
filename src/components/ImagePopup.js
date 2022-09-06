@@ -5,7 +5,7 @@ function ImagePopup (props) {
   return(
     <div 
       className={`popup popup_type_image-zoomed 
-    ${props.isOpened ? 'popup_opened' : ''} `}
+    ${props.isOpen ? 'popup_opened' : ''} `}
     >
       <div className="popup__zoom-container popup__container-area">
       <button className="button button-close" type="button" onClick={props.onClose} aria-label="Закрыть"></button>

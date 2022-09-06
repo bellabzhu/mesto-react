@@ -5,30 +5,8 @@ import Card from './Card';
 
 function Main (props) {
   
-  const [cards, setCards] = React.useState([]);
+
   const currentUser = React.useContext(CurrentUserContext);
-
-  React.useEffect(() => {
-    api.getInitialCards()
-      .then((cardsData) => setCards(cardsData))
-      .catch((err) => console.log(err))
-    }, [])
-
-  function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
-    api.changeLikeCardStatus(card._id, isLiked, currentUser)
-      .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
-      })
-      .catch((err) => console.log(err))
-  }
-
-  // После запроса в API, обновите стейт cards с помощью метода filter: создайте копию массива, исключив из него удалённую карточку.
-  function handleCardDelete (card) {
-    api.delCard (card._id)
-      .then()
-      .catch((err) => console.log(err))
-  }
 
   return (
     <main className="main">
@@ -45,13 +23,13 @@ function Main (props) {
 
     <section className="posts" aria-label="Посты">
       <ul className="posts__list">
-        {cards.map((card, i) => (
+        {props.cards.map((card, i) => (
           <Card
-          card={card}
-          key={card._id}
-          onCardClick={props.onCardClick}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
+            card={card}
+            key={card._id}
+            onCardClick={props.onCardClick}
+            onCardLike={props.onCardLike}
+            onCardDelete={props.onCardDelete}
           />
         ))}
       </ul>

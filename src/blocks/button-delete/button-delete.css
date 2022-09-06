@@ -1,5 +1,5 @@
 .button-delete {
-  display: none;
+  display: block;
   position: absolute;
   background-image: url(../../images/button-delete.svg);
   width: 18px;
