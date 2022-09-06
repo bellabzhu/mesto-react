@@ -23,14 +23,11 @@ function App() {
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    api.getInitialCards()
-      .then((cardsData) => setCards(cardsData))
-      .catch((err) => console.log(err))
-    }, [])
-
-  React.useEffect(() => {
-    api.getUserInfo()
-      .then((user) => setCurrentUser(user))
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then( ([user, cards]) => {
+        setCards(cards);
+        setCurrentUser(user);
+      })
       .catch((err) => console.log(err))
   }, [])
 
