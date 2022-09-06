@@ -33,7 +33,6 @@ function App() {
   }
 
   function handleUpdateAvatar (userAvatar) {
-    console.log('перед апишкой')
     api.setUserAvatar(userAvatar)
       .then((user) => setCurrentUser(user))
       .catch((err) => console.log(err))
