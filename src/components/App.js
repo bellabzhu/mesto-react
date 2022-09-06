@@ -4,12 +4,12 @@ import { api } from '../utils/Api';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
+import ConfirmationPopup from './ConfirmationPopup';
 
 function App() {
 
@@ -17,6 +17,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false)
+  const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({name: '', about: '', avatar: '', cohort: '', _id: ''})
   const [cards, setCards] = React.useState([]);
@@ -46,6 +47,7 @@ function App() {
     api.delCard(card._id)
       .then(() => setCards(cards.filter((item) => item._id !== card._id)))
       .catch((err) => console.log(err))
+      .finally(() => closeAllPopups())
   }
 
   function handleUpdateUser (userInfo) {
@@ -86,11 +88,17 @@ function App() {
     setSelectedCard(card)
   }
 
+  function handleCallConfirmationPopup (card) {
+    setIsConfirmationPopupOpen(true);
+    setSelectedCard(card)
+  }
+
   function closeAllPopups () {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsImagePopupOpen(false);
+    setIsConfirmationPopupOpen(false);
   }
 
   return (
@@ -104,7 +112,7 @@ function App() {
         onCardClick={handleCardClick}
         cards={cards}
         onCardLike={handleCardLike}
-        onCardDelete={handleCardDelete}
+        onDeleteClick={handleCallConfirmationPopup}
       />
 
       <Footer />
@@ -127,12 +135,11 @@ function App() {
         onAddPlace={handleAddPlace}
       />      
 
-      <PopupWithForm
-        title="Вы&nbsp;уверены?"
-        isOpen={false}
+      <ConfirmationPopup 
+        isOpen={isConfirmationPopupOpen} 
         onClose={closeAllPopups}
-        name="confirm"
-        buttonText="Да" 
+        onCardDelete={handleCardDelete}
+        selectedCard={selectedCard}
       />
 
       <ImagePopup
