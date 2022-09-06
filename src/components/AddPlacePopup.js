@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { isButtonLoadingContext } from '../contexts/isButtonLoadingContext';
 import PopupWithForm from './PopupWithForm';
 
 function AddPlacePopup (props) {
 
   const [placeName, setPlaceName] = useState('');
   const [placeLink, setPlaceLink] = useState('');
+
+  useEffect(() => {
+    setPlaceLink('');
+    setPlaceName('');
+  }, [props.isOpen])
 
   function handlePlaceNameChange (e) {
     setPlaceName(e.target.value)
@@ -29,6 +35,7 @@ function AddPlacePopup (props) {
       isOpen={props.isOpen}
       onClose={props.onClose}
       onSubmit={handleSubmit}
+      loadingButtonText='Добавление...'
       buttonText="Создать">
         <input className="popup__input popup__input_value_cardname" id="placename" type="text" placeholder="Название" name="name" required maxLength="30" minLength="2" onChange={handlePlaceNameChange} value={placeName} />
         <span className="popup__input-error popup__input-placename-error"></span>

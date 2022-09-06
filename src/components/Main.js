@@ -4,7 +4,6 @@ import Card from './Card';
 
 function Main (props) {
   
-
   const currentUser = useContext(CurrentUserContext);
 
   return (

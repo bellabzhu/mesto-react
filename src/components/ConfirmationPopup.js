@@ -13,6 +13,7 @@ function ConfirmationPopup (props) {
       isOpen={props.isOpen}
       onClose={props.onClose}
       onSubmit={handleSubmit}
+      loadingButtonText='Удаление...'
       name="confirm"
       buttonText="Да"
     />

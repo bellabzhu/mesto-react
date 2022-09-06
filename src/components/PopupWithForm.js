@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { isButtonLoadingContext } from '../contexts/isButtonLoadingContext'
+
 function PopupWithForm(props) {
+
+  const isLoading = useContext(isButtonLoadingContext);
 
   return (
     <div
@@ -22,9 +27,9 @@ function PopupWithForm(props) {
           <button
             type="submit"
             className="button button-submit"
-            value={props.buttonText}
+            value={isLoading ? props.loadingButtonText : props.buttonText}
           >
-            {props.buttonText}
+            {isLoading ? props.loadingButtonText : props.buttonText}
           </button>
         </form>
       </div>

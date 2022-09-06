@@ -6,6 +6,7 @@ import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { isButtonLoadingContext } from '../contexts/isButtonLoadingContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
@@ -21,6 +22,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({name: '', about: '', avatar: '', cohort: '', _id: ''})
   const [cards, setCards] = useState([]);
+  const [isButtonLoading, setIsButtonLoading] = useState(true);
 
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -41,31 +43,39 @@ function App() {
   }
 
   function handleCardDelete (card) {
+    setIsButtonLoading(true);
     api.delCard(card._id)
       .then(() => setCards(cards.filter((item) => item._id !== card._id)))
+      .then(() => closeAllPopups())
       .catch((err) => console.log(err))
-      .finally(() => closeAllPopups())
+      .finally(() => setIsButtonLoading(false))
   }
 
   function handleUpdateUser (userInfo) {
+    setIsButtonLoading(true);
     api.setUserInfo(userInfo)
       .then((user) => setCurrentUser(user))
+      .then(() => closeAllPopups())
       .catch((err) => console.log(err))
-      .finally(() => closeAllPopups())
+      .finally(() => setIsButtonLoading(false))
   }
 
   function handleUpdateAvatar (userAvatar) {
+    setIsButtonLoading(true);
     api.setUserAvatar(userAvatar)
       .then((user) => setCurrentUser(user))
+      .then(() => closeAllPopups())
       .catch((err) => console.log(err))
-      .finally(() => closeAllPopups())
+      .finally(() => setIsButtonLoading(false))
   }
 
   function handleAddPlace (card) {
+    setIsButtonLoading(true);
     api.addCard(card)
       .then((cardData) => setCards([cardData, ...cards]))
+      .then(() => closeAllPopups())
       .catch((err) => console.log(err))
-      .finally(() => closeAllPopups())
+      .finally(() => setIsButtonLoading(false))
   }
 
   function handleEditProfileClick () {
@@ -102,6 +112,7 @@ function App() {
     <div className="page-container">
       <Header />
       <CurrentUserContext.Provider value={currentUser}>
+      <isButtonLoadingContext.Provider value={isButtonLoading}>
       <Main 
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
@@ -145,6 +156,7 @@ function App() {
         onClose={closeAllPopups}
       />
 
+    </isButtonLoadingContext.Provider>
     </CurrentUserContext.Provider>
     </div>
   );
