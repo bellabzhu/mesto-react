@@ -1,4 +1,4 @@
-# Проект mesto на React
+# Project "Mesto" on React.js
 
 ### **About**
 This is the place where you can see other peoples photo-cards, like them and upload your own. You can change the name and avatar if you want. <br>
