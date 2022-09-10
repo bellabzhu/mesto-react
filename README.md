@@ -1,12 +1,21 @@
 # Проект mesto на React
 
-### **Обзор**
-Этот учебный проект повторяет функциональность Mesto, но реализован на React. 
+### **About**
+This is the place where you can see other peoples photo-cards, like them and upload your own. You can change the name and avatar if you want. <br>
 
-### Функциональность
-Сайт представляет собой страницу профиля юзера с некими фото-постами, подгружаемыми с сервера. Есть возможность редактировать имя юзера и добавлять новые посты. Также при клике на картинку в постах, появляется попап, где картинку можно посмотреть полноразмерно. Сайт проверяет валидность введенных пользователем данных и подсказывает ему что исправить.
+The project has the same functions as [Mesto](https://github.com/bellabzhu/app_mesto) but made on React.js.
 
-### Технологии
-* Верстка: HTML5, CSS3, flex, grid, template-теги, адаптивность. 
-* JavaScript ES6, работа с API, живая валидация инпутов, попапы.
-* React
+### **! Important**
+The project is using the Yandex API and many students has access to it that is why I apologize for any inappropriate content you could see - that is out of my control.
+
+### **Features**
+* changing name/about/avatar of current user;
+* adding a new card
+* deleting cards uploaded by you;
+* putting/removing likes;
+* clicking on image to see it fullscreen;
+
+### **Used**
+* HTML5, CSS3 (flex, grid, template tags, adaptive design); 
+* JavaScript ES6 (API, popups);
+* React.js (hooks useState, useEffect, useContext). CPA.
