@@ -19,3 +19,7 @@ The project is using the Yandex API and many students has access to it that is w
 * HTML5, CSS3 (flex, grid, template tags, adaptive design); 
 * JavaScript ES6 (API, popups);
 * React.js (hooks useState, useEffect, useContext). CPA.
+___
+**Author:** Bella Bzhukova.<br>
+
+<sub>The project was made during training at [Yandex.Practikum](https://practicum.yandex.ru).</sub>
