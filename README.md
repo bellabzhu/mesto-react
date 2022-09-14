@@ -1,9 +1,9 @@
 # Project "Mesto" on React.js
-
+>[Project DEMO.](https://bellabzhu.github.io/mesto-react)
 ### **About**
-This is the place where you can see other peoples photo-cards, like them and upload your own. You can change the name and avatar if you want. <br>
+This is the place where you can see other people's photo posts, like them and upload your own. You can change the name and avatar if you want. <br>
 
-The project has the same functions as [Mesto](https://github.com/bellabzhu/app_mesto) but made on React.js.
+The project has the same functionality as [Mesto](https://github.com/bellabzhu/app_mesto) but made on React.js.
 
 ### **! Important**
 The project is using the Yandex API and many students has access to it that is why I apologize for any inappropriate content you could see - that is out of my control.

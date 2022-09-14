@@ -22,7 +22,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({name: '', about: '', avatar: '', cohort: '', _id: ''})
   const [cards, setCards] = useState([]);
-  const [isButtonLoading, setIsButtonLoading] = useState(true);
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
 
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
