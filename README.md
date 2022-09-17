@@ -13,7 +13,7 @@ The project is using the Yandex API and many students has access to it that is w
 * adding a new card
 * deleting cards uploaded by you;
 * putting/removing likes;
-* clicking on image to see it fullscreen;
+* opening images fullscreen;
 
 ### **Used**
 * HTML5, CSS3 (flex, grid, template tags, adaptive design); 

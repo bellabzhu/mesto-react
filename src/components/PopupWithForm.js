@@ -1,14 +1,20 @@
 import { useContext } from "react";
 import { isButtonLoadingContext } from '../contexts/isButtonLoadingContext'
 
-function PopupWithForm(props) {
+function PopupWithForm (props) {
 
   const isLoading = useContext(isButtonLoadingContext);
 
+  function closeByOverlay (e) {
+    if (e.target === e.currentTarget) {
+      props.onClose();
+    }
+  }
+
   return (
     <div
-      className={`popup 
-    popup_type_${props.name} ${props.isOpen ? "popup_opened" : ""} `}
+      className={`popup popup_type_${props.name} ${props.isOpen ? "popup_opened" : ""} `}
+      onClick={closeByOverlay}
     >
       <div className="popup__container popup__container-area">
         <button

@@ -2,10 +2,16 @@ import React from "react";
 
 function ImagePopup (props) {
 
+  function closeByOverlay (e) {
+    if (e.target === e.currentTarget) {
+      props.onClose();
+    }
+  }
+
   return(
     <div 
-      className={`popup popup_type_image-zoomed 
-    ${props.isOpen ? 'popup_opened' : ''} `}
+      className={`popup popup_type_image-zoomed ${props.isOpen ? 'popup_opened' : ''} `}
+      onClick={closeByOverlay}
     >
       <div className="popup__zoom-container popup__container-area">
       <button className="button button-close" type="button" onClick={props.onClose} aria-label="Закрыть"></button>

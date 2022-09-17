@@ -19,6 +19,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false)
   const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false);
+  const isOpen = isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || isImagePopupOpen || isConfirmationPopupOpen;
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({name: '', about: '', avatar: '', cohort: '', _id: ''})
   const [cards, setCards] = useState([]);
@@ -32,6 +33,23 @@ function App() {
       })
       .catch((err) => console.log(err))
   }, [])
+
+  // Close any popup by Escape
+  useEffect(() => {
+    function closePopupByEsc(e) {
+      if (e.key === 'Escape') {
+        closeAllPopups();
+      }
+    }
+
+    if (isOpen) {
+        document.addEventListener('keydown', closePopupByEsc)
+    }
+
+    return () => {
+      document.removeEventListener('keydown', closePopupByEsc)
+    }
+  }, [isOpen])
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
